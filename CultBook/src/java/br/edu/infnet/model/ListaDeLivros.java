@@ -6,6 +6,17 @@ public class ListaDeLivros {
     
     public ArrayList<Livro> buscarLivros(){
         
-        return null;
+        ArrayList<Livro> livros = new ArrayList<>();
+        
+        Livro l1 = new Livro("001", "Livro A", "Autor A", 10, 99.90, "livA.jpg");
+        Livro l2 = new Livro("002", "Livro B", "Autor B", 10, 99.90, "livB.jpg");
+        Livro l3 = new Livro("003", "Livro C", "Autor C", 10, 99.90, "livC.jpg");
+        
+
+        livros.add(l1);
+        livros.add(l2);
+        livros.add(l3);
+
+        return livros;
     }
 }

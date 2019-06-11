@@ -10,6 +10,23 @@ class Livro {
     private double preco;
     private String figura;
     
+    public Livro(){        
+    }
+
+    public Livro(String isbn, String titulo, String descricao, String autor, int estoque, double preco, String figura) {
+        this.isbn = isbn;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.autor = autor;
+        this.estoque = estoque;
+        this.preco = preco;
+        this.figura = figura;
+    }
+
+    public Livro(String string, String livro_A, String autor_A, int i, double d, String livAjpg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+        
     public String getIsbn() {
         return isbn;
     }

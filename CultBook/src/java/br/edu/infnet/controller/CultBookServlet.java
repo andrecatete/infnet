@@ -12,61 +12,93 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "CultBookServlet", urlPatterns = {"/CultBookServlet"})
 public class CultBookServlet extends HttpServlet {
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {    
-        
-        try{
-            String nome = request.getParameter("nome");
-            String email = request.getParameter("email");
-            String fone = request.getParameter("fone");
-            String endereco = request.getParameter("endereco");
-            String login = request.getParameter("login");
-            String senha = request.getParameter("senha");        
-            
-            ArrayList<String> erros = new ArrayList<String>();
-            
+
+    private void gravarCliente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        String fone = request.getParameter("fone");
+        String endereco = request.getParameter("endereco");
+        String login = request.getParameter("login");
+        String senha = request.getParameter("senha");
+
+        ArrayList<String> erros = new ArrayList<String>();
+
 //            VALIDAÇÃO
-            
 //            1- nome, email e login obrigatorios;
-            if(nome.isEmpty()){
-                erros.add("Falta nome");
-            }
-            if(email.isEmpty()){
-                erros.add("Falta email");
-            }
-            if(login.isEmpty()){
-                erros.add("Falta login");
-            }
+        if (nome.isEmpty()) {
+            erros.add("Falta nome");
+        }
+        if (email.isEmpty()) {
+            erros.add("Falta email");
+        }
+        if (login.isEmpty()) {
+            erros.add("Falta login");
+        }
 //            2- login ter no minimo 8 caracteres;
-            if(login.length() < 8)
-                erros.add("Login deve ter pelo meno 8 caracteres");
+        if (login.length() < 8) {
+            erros.add("Login deve ter pelo meno 8 caracteres");
+        }
 //            3- nome deve ter no minimo duas palavras;
-            if(nome.trim().split(" ").length < 2 )
-                erros.add("Nome deve ter pelo menos duas palavras");
-            
-            //redirecionamento
-            Cliente c = new Cliente();
-            c.setNome(nome);
-            c.setEmail(email);
-            c.setFone(fone);
-            c.setEndereco(endereco);
-            c.setLogin(login);
-            c.setSenha(senha);
-            request.setAttribute("cliente", c);
-            request.setAttribute("erros", erros);
-                        
-            //request.getRequestDispatcher("sucesso.jsp").forward(request, response);
-            //mesmo efeito de "response.sendRedirect" mas passa parametros;
-            
-            if(erros.isEmpty())
+        if (nome.trim().split(" ").length < 2) {
+            erros.add("Nome deve ter pelo menos duas palavras");
+        }
+
+        //redirecionamento
+        Cliente c = new Cliente();
+        c.setNome(nome);
+        c.setEmail(email);
+        c.setFone(fone);
+        c.setEndereco(endereco);
+        c.setLogin(login);
+        c.setSenha(senha);
+        request.setAttribute("cliente", c);
+        request.setAttribute("erros", erros);
+
+        //request.getRequestDispatcher("sucesso.jsp").forward(request, response);
+        //mesmo efeito de "response.sendRedirect" mas passa parametros;
+        if (erros.isEmpty()) {
             request.getRequestDispatcher("sucesso.jsp").forward(request, response);
-            else
+        } else {
             request.getRequestDispatcher("cadastro.jsp").forward(request, response);
         }
-        catch(Exception e){
-            
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doAction(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doAction(request, response);
+    }
+
+    protected void doAction(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            String tarefa = request.getParameter("tarefa");
+
+            switch (tarefa) {
+
+                case "cadastrar":
+                    response.sendRedirect("cadastro.jsp");
+                    break;
+                case "gravar":
+                    gravarCliente(request, response);
+                    break;
+                case "buscar":
+                    request.getRequestDispatcher("ListarLivrosServlet").forward(request, response);
+                    break;
+                default:
+                    response.sendRedirect("menuInicial.jsp");
+                    break;
+            }
+
+        } catch (Exception e) {
+
         }
-    }   
+    }
 }

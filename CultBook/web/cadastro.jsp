@@ -21,7 +21,7 @@
     </head>
     <body>
         <h1>Cadastro</h1>
-        <form action="CultBookServlet" method="POST">
+        <form action="CultBookServlet?tarefa=gravar" method="POST">
             nome:<input type="text" name="nome" value="<jsp:getProperty name="cliente" property="nome" />"/><br />
             email:<input type="text" name="email" value="<%=cliente.getEmail()%>"/><br />
             fone:<input type="text" name="fone" value="${cliente.fone}"/><br />

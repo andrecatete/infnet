@@ -7,6 +7,6 @@
     </head>
     <body>
         <h1>Menu Inicial</h1>
-        <a href="cadastro.jsp" >Ir para cadastro</a> 
+        <a href="CultBookServlet?tarefa=cadastrar" >Ir para cadastro</a> 
     </body>
 </html>
