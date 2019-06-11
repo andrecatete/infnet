@@ -11,6 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ListarLivrosServlet", urlPatterns = {"/ListarLivrosServlet"})
 public class ListarLivrosServlet extends HttpServlet {
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response){
+        try {
+            
+        } catch (Exception e) {
+        }
+    }
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

@@ -8,5 +8,6 @@
     <body>
         <h1>Menu Inicial</h1>
         <a href="CultBookServlet?tarefa=cadastrar" >Ir para cadastro</a> 
+        <a href="CultBookServlet?tarefa=buscar" >Buscar Livros</a> 
     </body>
 </html>
