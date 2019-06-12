@@ -25,11 +25,11 @@
                 for(Livro livro : livros){ %>
                     
                 <tr>
-                    <td>001</td>
-                    <td>LivroA</td>
-                    <td>0.0</td>
-                    <td>0</td>
-                    <td>ver detalhe</td>
+                    <td><%=livro.getIsbn()%></td>
+                    <td><%=livro.getTitulo()%></td>
+                    <td><%=livro.getPreco()%></td>
+                    <td><%=livro.getEstoque()%></td>
+                    <td><a href="CultBookServlet?tarefa=detalhar&isbn=<%=livro.getIsbn()%>">ver detalhe</a></td>
                 </tr>
                 <%
                 }
