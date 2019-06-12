@@ -1,6 +1,6 @@
 package br.edu.infnet.model;
 
-class Livro {
+public class Livro {
     
     private String isbn;
     private String titulo;
@@ -23,10 +23,6 @@ class Livro {
         this.figura = figura;
     }
 
-    public Livro(String string, String livro_A, String autor_A, int i, double d, String livAjpg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-        
     public String getIsbn() {
         return isbn;
     }

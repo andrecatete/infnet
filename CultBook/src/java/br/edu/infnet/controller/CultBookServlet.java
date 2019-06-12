@@ -1,6 +1,8 @@
 package br.edu.infnet.controller;
 
 import br.edu.infnet.model.Cliente;
+import br.edu.infnet.model.ListaDeLivros;
+import br.edu.infnet.model.Livro;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -90,7 +92,9 @@ public class CultBookServlet extends HttpServlet {
                     gravarCliente(request, response);
                     break;
                 case "buscar":
-                    request.getRequestDispatcher("ListarLivrosServlet").forward(request, response);
+                    ArrayList<Livro> livros = new ListaDeLivros().buscarLivros();
+                    request.setAttribute("livros", livros);
+                    request.getRequestDispatcher("listarLivros.jsp").forward(request, response);
                     break;
                 default:
                     response.sendRedirect("menuInicial.jsp");
