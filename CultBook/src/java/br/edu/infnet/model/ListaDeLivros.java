@@ -19,4 +19,13 @@ public class ListaDeLivros {
 
         return livros;
     }
+    
+    public Livro obterLivro(String isbn){
+        ArrayList<Livro> livros = buscarLivros();
+        for (Livro livro : livros){
+            if(livro.getIsbn().equals(isbn))
+                return livro;
+        }
+        return null;
+    }
 }

@@ -96,6 +96,12 @@ public class CultBookServlet extends HttpServlet {
                     request.setAttribute("livros", livros);
                     request.getRequestDispatcher("listarLivros.jsp").forward(request, response);
                     break;
+                case "detalhar":
+                    String isbn = request.getParameter("isbn");
+                    Livro livro = new ListaDeLivros().obterLivro(isbn);
+                    request.setAttribute("livro", livro);
+                    request.getRequestDispatcher("detalhe.jsp?isbn=" + isbn).forward(request, response);
+                    break;
                 default:
                     response.sendRedirect("menuInicial.jsp");
                     break;
