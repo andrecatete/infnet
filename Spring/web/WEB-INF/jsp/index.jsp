@@ -16,8 +16,7 @@
                 Usuário: <input type="text" name="login" /><br>
                 Senha: <input type="password" name="senha" /><br>
                 <input type="submit" name="entrar" style="float:right"><br>
-                <a href="${pageContext.request.contextPath}/login">cadastre-se<a>
-                        
+                <a href="${pageContext.request.contextPath}/login">cadastre-se<a>                        
             </fieldset>
         </form>
     </body>

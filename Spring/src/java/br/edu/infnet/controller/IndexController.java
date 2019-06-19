@@ -29,7 +29,7 @@ public class IndexController {
                 
         if (login.equals("admin") && senha.equals("admin")){
             
-            model.addAttribute("login", login);
+            model.addAttribute("log", login); // passando para sucesso.jsp
             return "sucesso";
         }
         else

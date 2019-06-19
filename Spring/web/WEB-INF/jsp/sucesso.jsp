@@ -6,6 +6,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bem vindo, ${l} !</h1>
+        <h1>Bem vindo, ${log} !</h1>
     </body>
 </html>
